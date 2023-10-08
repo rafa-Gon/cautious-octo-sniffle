@@ -30,3 +30,11 @@ switch (opcion){
                 alert("Opcion Incorrecta")
                 break;
 }
+
+for(let turno = 1; turno <= 3; turno++){
+    let nombre = prompt("Ingrese su Nombre");
+
+    alert(`Pagar en caja #${turno} Sr: ${nombre}`);
+}
+
+alert("Turnos terminados, por favor intentar mañana");
