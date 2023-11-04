@@ -42,70 +42,71 @@
 
             //***** */ segunda pre-entrega
 
-            //!! funciones matematicas
 
+alert("Bienvenidos");
 
-//     function operacionesMtematicas(){
-//         let numero1 = parseFloat(prompt("Ingrese un numero"));
+const productos = [
+    { nombre: "Anis cartujo", precio: 2600},
+    { nombre: "Casique 500", precio: 1880},
+    { nombre: "Diplomatico", precio: 1320},
+    { nombre: "Ron De Solera Santa Teresa 1796", precio: 1600},
+    { nombre: "Ron Carupano 25 Años Single Barrel", precio: 19200},
+];
 
-//         let operacion = prompt("Introduce el la operación (+, -, *, /):")
+let carrito = [];
+let seleccion = prompt("Te ofrececemos nuestra seleccion especial, ¿deseas continuar?");
 
-//         let numero2 = parseFloat(prompt("Ingrese un segundo numero numero"));
+while (seleccion !== "si" && seleccion !== "no") {
+    alert("Seleccione una opcion");
+    seleccion = prompt("Te ofrececemos nuestra seleccion especial, ¿deseas continuar?")
+}
 
-//         switch(operacion){
-//             case "+":
-//                 alert("Resultado: " + (numero1 + numero2));
-//                 break;
+if (seleccion === "si") {
+    alert("Aquí te presentamos nuestra seleccion del día");
+    let productoRon = productos.map((producto) => producto.nombre + " " + producto.precio + "$");
+    alert(productoRon.join(" - "));
+} else if (seleccion === "no") {
+    alert("Gracias por visitarnos");
+}
 
-//             case "-":
-//                 alert("Resultado: " + (nuumero1 - numero2));
-//                 break;
-//             case "*":
-//             alert("Resultado: " + (numero1 * numero2));
-//             break;
+while (seleccion === "si") {
+    let producto = prompt("Agregar producto al carrito: Anis cartujo, Cacique 500, Diplomatico, Ron De Solera Santa Teresa 1796, Ron Carupano 25 Años Single Barrel");
+    let precio = 0;
 
-//             case "/":
-//                 if(numero2 !==0){
-//                     alert("Resultado " + (numero1 / numero2));
-//                 } else {
-//                     alert("No es posible dividir por cero.");
-//                 }
-//                 break;
-//             default:
-//                 alert("Operacion no valida");
+    if (producto === "Anis cartujo" || producto === "Cacique 500" || producto === "Diplomatico" || producto === "Ron De Solera Santa Teresa 1796" || producto === "Ron Carupano 25 Años Single Barrel") {
+        switch (producto) {
+            case "Anis cartujo":
+                precio = 2600;
+                break;
+            case "Cacique 500":
+                precio = 1880;
+                break;
+            case "Diplomatico":
+                precio = 1320;
+                break;
+            case "Ron De Solera Santa Teresa 1796":
+                precio = 1600;
+                break;
+            case "Ron Carupano 25 Años Single Barrel":
+                precio = 19200;
+                break;
+        }
+        
+         carrito.push({ nombre: producto, precio: precio });
+        
+        alert(producto + " se ha agregado al carrito");
+    } else {
+        alert("Producto no identificado. Intente de nuevo");
+    }
+    
+    seleccion = prompt("¿Desea agregar otro producto al carrito? si o no");
+}
 
-//         }
-// }
-
-//     operacionesMtematicas()
-    // !!
-
-
-    //!! objetos
-
-//     let usuario = {
-//         nombre: "Rafael",
-//         apellido: "Gonzalez",
-//         edad: "21"
-//     };
-
-// let propiedad = prompt("Ingrese la propiedad que quiere buscar dentro del Array");
-
-// if (!usuario.hasOwnProperty(propiedad)) {
-//     alert("Propiedad no encontrada");
-// }else{
-// alert(usuario[propiedad]);
-// }
-// !!
-
-//!! arrays  
-
-// let numeros = [1, 2, 3, 4, 5 ,6];
-// let index = numeros.indexOf(1);
-// console.log(index);
-
-// let existe = numeros.includes(3);
-// console.log(existe);
-
-// let filtrado = numeros.filter(numero => numero > 1);
-// console.log(filtrado);
+if (carrito.length > 0) {
+    let total = carrito.reduce((sum, product) => sum + product.precio, 0);
+    alert("Carrito de compras:");
+    carrito.forEach((item) => alert(item.nombre + " - Precio: " + item.precio + "$"));
+    alert("Total a pagar: " + total + "$");
+} else {
+    alert("Gracias por visitarnos");
+}
